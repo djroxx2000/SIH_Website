@@ -90,6 +90,10 @@ ul{
     align-items: center;
 }
 
+#home-login-btn:hover {
+    cursor: pointer;
+}
+
 .sm{
     margin-right: 0.5rem;
     margin-left: 0.8rem;
@@ -138,6 +142,7 @@ ul{
 
 #quote1{
     margin-left: 60%;
+    color: #fe8761;
 }
 
 #login{
