@@ -59,7 +59,7 @@
                 <button class="sm" id="lawyer-btn" onclick="window.location.href='lawyer.php?q=login'"> Log in as Lawyer</button>
                 <div id="lawyer-div"></div>
 
-                <button class="sm btn-main" id="admin-btn" onclick="window.location.href='admin.php?q=login'">Admin</button>
+                <button class="sm btn-main" id="admin-btn" onclick="window.location.href='admin.php?q=login'">Log in as Admin</button>
                 <div id="admin-div"></div>
 
                 <div class="carousel__button--next"></div>
