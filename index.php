@@ -27,7 +27,6 @@
             </div>
             <div id="item2">
                 <button class="sm" id="home-login-btn" onclick="location.href='#login'">Login</button>
-                <button class="sm" id="home-login-btn" onclick="location.href='#'">Signup</button>
             </div>
         </div>
         <div class="index">
