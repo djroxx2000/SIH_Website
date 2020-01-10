@@ -1,39 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once("includes/header.php"); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/2f7569df82.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Court Data Managament System</title>
-</head>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-gavel mr-2"></i>
+            Court System
+        </a>
+    </nav>
 
-<body>
-    <header>
-        <div class="title">
-            <i class="fas fa-gavel fa-3x"></i>
-            <h1>Court Case Information System</h1>
+    <div class="split left">
+        <div class="centered">
+            <p>"No one is above the law and no one is below the law.Justice has got to be blind.
+                The more powerful shall not pick on the less powerful."
+                <span id="quote">
+                    ~Josh Earnest
+                </span>
+            </p>
+            <a href="contact.php" class="btn btn-info" role="button">
+                Contact us
+            </a>
         </div>
-        <div id="home" class="navbar">
-            <a href="#Home">Home</a>
-            <a href="#FAQ">FAQ</a>
-            <a href="#Help">Help</a>
-            <a href="#Contact">Contact</a>
-        </div>
-    </header>
-    <div id="test"></div>
-    <div class="main">
-        <button class="btn-main" id="admin-btn" onclick=admin_form()>Admin</button>
-        <div id="admin-div"></div>
-        <button class="btn-main" id="client-btn" onclick=client_form()>Client</button>
-        <div id="client-div"></div>
-        <button class="btn-main" id="lawyer-btn" onclick=lawyer_form()>Lawyer</button>
-        <div id="lawyer-div"></div>
     </div>
-    <script src="main.js"></script>
 
-</body>
+    <div class="split right">
+        <div class="centered">
+            <img src="public/images/statue.jpg" alt="statue">
+        </div>
+    </div>
 
-</html>
+<?php require_once("includes/footer.php"); ?>
