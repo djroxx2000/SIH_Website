@@ -45,9 +45,12 @@
                 </div>
 
                 <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="button" class="cancelbtn" onclick="window.location.href='index.php'">
+                        Cancel
+                    </button>
                     <span class="psw">Forgot <a href="#">password?</a></span>
                 </div>
+                <a href="client_signup.php"> Dont have account? Signup </a>
             </form>
        </div>
 

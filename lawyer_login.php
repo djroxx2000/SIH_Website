@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +19,41 @@
 </head>
 
 <body>
+
+    <?php
+        if(isset($_POST["lawyer-login"])){
+            $email=($_POST["lawyer-email"]);
+            $password=($_POST["lawyer-password"]);
+            require_once("includes/db.php");
+            $con;
+            $connectingdb;
+            if ($connectingdb) {
+                $query = "SELECT * FROM lawyer_login WHERE lawyer_email = '{$email}'";
+                $Execute=mysqli_query($con,$query);
+                if($Execute){
+                    if($obj=mysqli_fetch_assoc($Execute)){
+                        if (password_verify($password, $obj["lawyer_password"])){
+                            echo "Pw true";
+                        }
+                        else{
+                            echo "invalid pw";
+                        }
+                    }else{
+                        echo "not found email";
+                    }
+                }
+                else{
+                    echo "server prob";
+                }
+            }
+            else{
+                echo "server prob";
+            }
+        }
+    ?>
+
     <div class="container">
-        <form action="action_page.php" method="post">
+        <form action="lawyer_login.php" method="post">
             <div class="imgcontainer">
                 <img src="public/images/user.png" alt="Avatar" class="avatar">
                 <br>
@@ -28,13 +62,13 @@
             </div>
 
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="lawyer-email" required>
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+                <input type="password" placeholder="Enter Password" name="lawyer-password" id="pass" required>
 
-                <button type="submit">Login</button>
+                <button type="submit" name="lawyer-login">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>&nbsp;
@@ -45,9 +79,12 @@
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
-                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="cancelbtn" onclick="window.location.href='index.php'">
+                    Cancel
+                </button>
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
+            <a href="lawyer_signup.php"> Dont have account? Sign up </a>
         </form>
     </div>
 

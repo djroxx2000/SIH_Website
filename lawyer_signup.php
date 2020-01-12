@@ -19,23 +19,54 @@
 
 <body>
 
-    <form action="lawyer_signup.php" style="border:1px solid #ccc">
+    <?php
+        if(isset($_POST["lawyer-signup"])){
+            $firstname=($_POST["lawyer-firstname"]);
+            $lastname=($_POST["lawyer-lastname"]);
+            $email=($_POST["lawyer-email"]);
+            $password=($_POST["lawyer-password"]);
+            require_once("includes/db.php");
+            $con;
+            $connectingdb;
+            if ($connectingdb) {
+                $query = "SELECT * FROM lawyer_login WHERE lawyer_email = '{$email}'";
+                $Execute=mysqli_query($con,$query);
+                $x=0;
+                if($Execute){
+                    if($Execute->num_rows){
+                        echo "Email already used.";
+                        $x=1;
+                    }
+                }
+                if($x==0){
+                    $hashedpwd = password_hash($password, PASSWORD_BCRYPT);
+                    $query="INSERT INTO lawyer_login(lawyer_first_name, lawyer_last_name, lawyer_email, lawyer_password)
+                    VALUES ('$firstname','$lastname','$email','$hashedpwd')";
+                    $Execute=mysqli_query($con,$query);
+                    echo "Signuped";
+                }
+            }
+        }
+
+    ?>
+
+    <form action="lawyer_signup.php" method="post" style="border:1px solid #ccc">
         <div class="container">
             <h1>Sign Up for Lawyers</h1>
             <p>Please fill in this form to create an account.</p>
             <hr>
 
             <label for="name"><b>First Name</b></label>
-            <input type="text" placeholder="First Name" name="psw-repeat" required>
+            <input type="text" placeholder="First Name" name="lawyer-firstname" required>
 
             <label for="name"><b>Last Name</b></label>
-            <input type="text" placeholder="Last Name" name="psw-repeat" required>
+            <input type="text" placeholder="Last Name" name="lawyer-lastname" required>
 
             <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="Enter Email" name="lawyer-email" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="pass" required>
+            <input type="password" placeholder="Enter Password" name="lawyer-password" id="pass" required>
 
             <label>
                 <input type="checkbox" checked="checked" name="remember"  style="margin-bottom:15px"> Remember me
@@ -48,9 +79,12 @@
             <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="button" class="cancelbtn" onclick="window.location.href='index.php'">
+                    Cancel
+                </button>
+                <button type="submit" name="lawyer-signup" class="signupbtn">Sign Up</button>
             </div>
+            <a href="lawyer_login.php"> Have account? Login </a>
         </div>
     </form>
 
