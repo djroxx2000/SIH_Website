@@ -19,23 +19,55 @@
 
 <body>
 
-    <form action="client_signup.php" style="border:1px solid #ccc">
+    <?php
+        if(isset($_POST["client-signup"])){
+            $firstname=($_POST["client-firstname"]);
+            $lastname=($_POST["client-lastname"]);
+            $email=($_POST["client-email"]);
+            $password=($_POST["client-password"]);
+            require_once("includes/db.php");
+            $con;
+            $connectingdb;
+            if ($connectingdb) {
+                $query = "SELECT * FROM client WHERE client_email = '{$email}'";
+                $Execute=mysqli_query($con,$query);
+                $x=0;
+                if($Execute){
+                    if($Execute->num_rows){
+                        echo "Email already used.";
+                        $x=1;
+                    }
+                }
+                if($x==0){
+                    $hashedpwd = password_hash($password, PASSWORD_BCRYPT);
+                    $query="INSERT INTO client(client_first_name, client_last_name, client_email, client_password)
+                    VALUES ('$firstname','$lastname','$email','$hashedpwd')";
+                    $Execute=mysqli_query($con,$query);
+                    echo "Signuped client";
+                }
+            }
+        }
+
+    ?>
+
+
+    <form action="client_signup.php" method="post" style="border:1px solid #ccc">
         <div class="container">
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
           <hr>
 
           <label for="name"><b>First Name</b></label>
-          <input type="text" placeholder="First Name" name="psw-repeat" required>
+          <input type="text" placeholder="First Name" name="client-firstname" required>
 
           <label for="name"><b>Last Name</b></label>
-          <input type="text" placeholder="Last Name" name="psw-repeat" required>
+          <input type="text" placeholder="Last Name" name="client-lastname" required>
 
           <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
+          <input type="text" placeholder="Enter Email" name="client-email" required>
 
           <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" id="pass" required>
+          <input type="password" placeholder="Enter Password" name="client-password" id="pass" required>
 
           <label>
             <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -51,7 +83,7 @@
             <button type="button" class="cancelbtn" onclick="window.location.href='index.php'">
                 Cancel
             </button>
-            <button type="submit" class="signupbtn">Sign Up</button>
+            <button type="submit" name="client-signup" class="signupbtn">Sign Up</button>
           </div>
           <a href="client_login.php"> Have account? Login </a>
         </div>

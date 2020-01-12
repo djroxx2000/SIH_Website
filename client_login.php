@@ -20,21 +20,53 @@
 
 <body>
 
+        <?php
+            if(isset($_POST["client-login"])){
+                $email=($_POST["client-email"]);
+                $password=($_POST["client-password"]);
+                require_once("includes/db.php");
+                $con;
+                $connectingdb;
+                if ($connectingdb) {
+                    $query = "SELECT * FROM client WHERE client_email = '{$email}'";
+                    $Execute=mysqli_query($con,$query);
+                    if($Execute){
+                        if($obj=mysqli_fetch_assoc($Execute)){
+                            if (password_verify($password, $obj["client_password"])){
+                                echo "Pw true";
+                            }
+                            else{
+                                echo "invalid pw";
+                            }
+                        }else{
+                            echo "not found email";
+                        }
+                    }
+                    else{
+                        echo "server prob";
+                    }
+                }
+                else{
+                    echo "server prob";
+                }
+            }
+        ?>
+
         <!-- client login form -->
         <div class="container">
-            <form action="action_page.php" method="post">
+            <form action="client_login.php" method="post">
                 <div class="imgcontainer">
                     <img src="public/images/user.png" alt="Avatar" class="avatar">
                 </div>
 
                 <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="client-email" required>
 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+                    <input type="password" placeholder="Enter Password" name="client-password" id="pass" required>
 
-                    <button type="submit">Login</button>
+                    <button type="submit" name="client-login">Login</button>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>&nbsp;
