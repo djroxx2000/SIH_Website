@@ -3,7 +3,7 @@
 $host = 'host';
 $user = 'user';
 $pwd = 'pw';
-$db = 'db';
+$db = 'court_case_management';
 
 $con = mysqli_connect($host, $user, $pwd);
 $connectingdb=mysqli_select_db($con, $db);
