@@ -1,4 +1,20 @@
-<?php require_once("includes/header.php"); ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Court DBMS</title>
+    <link rel="stylesheet" href="public/css/carousel.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://kit.fontawesome.com/2f7569df82.js" crossorigin="anonymous"></script>
+    <link rel = "icon"
+    href = "public/images/statue.jpg"
+    type = "image/x-icon">
+</head>
+
+<body>
 
     <!--Vertical Left in-page Nav Bar-->
     <div>
@@ -52,13 +68,13 @@
             <div class="carousel">
 
                 <img class="carousel__photo initial" src="public/images/quote1.jpg">
-                <button class="sm" id="client-btn" onclick="window.location.href='client.php?q=login'">Log in as Client</button>
+                <button class="sm" id="client-btn" onclick="window.location.href='client_login.php'">Log in as Client</button>
                 <div id="client-div"></div>
                 <img class="carousel__photo" src="public/images/quote2.jpg">
-                <button class="sm" id="lawyer-btn" onclick="window.location.href='lawyer.php?q=login'"> Log in as Lawyer</button>
+                <button class="sm" id="lawyer-btn" onclick="window.location.href='lawyer_login.php'"> Log in as Lawyer</button>
                 <div id="lawyer-div"></div>
 
-                <button class="sm btn-main" id="admin-btn" onclick="window.location.href='admin.php?q=login'">Log in as Admin</button>
+                <button class="sm btn-main" id="admin-btn" onclick="window.location.href='admin_login.php'">Admin</button>
                 <div id="admin-div"></div>
 
                 <div class="carousel__button--next"></div>
@@ -111,4 +127,7 @@
     </div>
     <!-- faq section ends -->
 
-<?php require_once("includes/footer.php"); ?>
+    <script src="public/js/app.js"> </script>
+
+</body>
+</html>
