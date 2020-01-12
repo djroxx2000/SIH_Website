@@ -10,7 +10,7 @@ background: white;
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=email], input[type=text], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -74,4 +74,13 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+  form {
+      width: 80%;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 600px) {
+    form {
+        width: 80%;
+    }
 }

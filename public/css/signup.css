@@ -75,3 +75,9 @@ button:hover {
     width: 100%;
   }
 }
+
+@media (min-width: 301px) and (max-width: 600px) {
+    form {
+        width: 80%;
+    }
+}
