@@ -75,19 +75,22 @@
             <div class="carousel__track-container">
                 <ul class="carousel__track">
                     <li class="carousel__slide current-slide">
-                        <img class="carousel__image" src="public/images/quote2.jpg" alt="">
+                        <img class="carousel__image" src="public/images/quote1.jpg" alt="">
                         <button class="sm" id="client-btn" onclick="window.location.href='client_login.php'">
                             Log in as Client
                         </button>
                     </li>
                     <li class="carousel__slide">
-                        <img class="carousel__image" src="public/images/quote1.jpg" alt="">
-                        <button class="sm" id="lawyer-btn" onclick=onclick="window.location.href='lawyer_login.php'">
+                        <img class="carousel__image" src="public/images/quote2.jpg" alt="">
+                        <button class="sm" id="lawyer-btn" onclick="window.location.href='lawyer_login.php'">
                             Log in as Lawyer
                         </button>
-                        <div id="lawyer-div">
-
-                        </div>
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__image" src="public/images/quote3.jpg" alt="">
+                        <button class="sm" id="admin-btn" onclick="window.location.href='admin_login.php'">
+                            Log in as Admin
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -97,6 +100,7 @@
         </div>
         <div class="carousel__nav">
             <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
             <button class="carousel__indicator"></button>
         </div>
     </div>
