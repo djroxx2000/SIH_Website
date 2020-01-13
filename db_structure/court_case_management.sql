@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2020 at 03:05 PM
+-- Generation Time: Jan 13, 2020 at 07:59 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.8
 
@@ -30,10 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin_login` (
   `admin_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `admin_first_name` varchar(50) NOT NULL,
+  `admin_last_name` varchar(50) NOT NULL,
   `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `phone_no` int(11) NOT NULL
+  `phone_no` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -73,12 +74,20 @@ CREATE TABLE `case_invoices` (
 
 CREATE TABLE `client` (
   `client_id` int(11) NOT NULL,
-  `client_name` varchar(50) NOT NULL,
+  `client_first_name` varchar(50) NOT NULL,
+  `client_last_name` varchar(50) NOT NULL,
   `client_email` varchar(50) NOT NULL,
-  `client_password` varchar(50) NOT NULL,
-  `phone_no` int(11) NOT NULL,
-  `address` varchar(100) NOT NULL
+  `client_password` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `phone_no` int(11) DEFAULT NULL,
+  `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`client_id`, `client_first_name`, `client_last_name`, `client_email`, `client_password`, `phone_no`, `address`) VALUES
+(1, 'testclient', 'clienttest', 'test@testclient', '$2y$10$opHKtn0ZmDD6YfgX8nONje4OyBineFj01lvjXspvtjufOPm/n1vX.', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -88,16 +97,24 @@ CREATE TABLE `client` (
 
 CREATE TABLE `lawyer_login` (
   `lawyer_id` int(11) NOT NULL,
-  `lawyer_name` varchar(50) NOT NULL,
+  `lawyer_first_name` varchar(50) NOT NULL,
+  `lawyer_last_name` varchar(50) NOT NULL,
   `lawyer_email` varchar(50) NOT NULL,
   `lawyer_password` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `lawyer_phone_no` int(11) NOT NULL,
-  `lawyer_city` varchar(100) NOT NULL,
-  `lawyer_address` varchar(200) NOT NULL,
-  `lawyer_rating` int(11) NOT NULL,
-  `specialization` varchar(100) NOT NULL,
-  `lawyer_image` blob NOT NULL
+  `lawyer_phone_no` int(11) DEFAULT NULL,
+  `lawyer_city` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `lawyer_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `lawyer_rating` int(11) DEFAULT NULL,
+  `specialization` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `lawyer_image` blob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `lawyer_login`
+--
+
+INSERT INTO `lawyer_login` (`lawyer_id`, `lawyer_first_name`, `lawyer_last_name`, `lawyer_email`, `lawyer_password`, `lawyer_phone_no`, `lawyer_city`, `lawyer_address`, `lawyer_rating`, `specialization`, `lawyer_image`) VALUES
+(6, 'test', 'test', 'test@test', '$2y$10$EH6syDHLHODkgdOfRkPVEeGdEkGbRGKY3athPVzFndTCLlP5PHQym', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -153,13 +170,13 @@ ALTER TABLE `cases`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lawyer_login`
 --
 ALTER TABLE `lawyer_login`
-  MODIFY `lawyer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `lawyer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
