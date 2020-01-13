@@ -1,129 +1,95 @@
-!(function(d){
-  var itemClassName = "carousel__photo";
-      items = d.getElementsByClassName(itemClassName),
-      totalItems = items.length,
-      slide = 0,
-      moving = true;
+//carousel elements
+const track = document.querySelector('.carousel__track');
+const slides = Array.from(track.children);
+const nextButton = document.querySelector('.carousel__button--next');
+const prevButton = document.querySelector('.carousel__button--prev');
+const dotsNav = document.querySelector('.carousel__nav');
+const dots = Array.from(dotsNav.children);
 
-  function setInitialClasses() {
+//carousel buttons
+const client_btn = document.getElementById('client-btn');
+const lawyer_btn = document.getElementById('lawyer-btn');
+const admin_btn = document.getElementById('admin-btn');
 
-    items[totalItems - 1].classList.add("prev");
-    items[0].classList.add("active");
-    items[1].classList.add("next");
-  }
+//Carousel properties
+const slideWidth = slides[0].getBoundingClientRect().width;
 
-  // Set click events to navigation buttons
+slides.forEach((slide, index) => {
+    slide.style.left = slideWidth * index + 'px';
+})
 
-  function setEventListeners() {
-    var next = d.getElementsByClassName('carousel__button--next')[0],
-        prev = d.getElementsByClassName('carousel__button--prev')[0];
+const moveToSlide = (targetSlide, currentSlide) => {
+    track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+};
 
-    next.addEventListener('click', moveNext);
-    prev.addEventListener('click', movePrev);
-  }
+const removeStyle = (targetSlide, currentSlide, targetDot, currentDot, targetIndex) => {
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+    currentDot.classList.remove('current-slide');
+    targetDot.classList.add('current-slide');
+    if (targetIndex === 0) {
+        prevButton.classList.add('hide');
+        nextButton.classList.remove('hide');
 
-  // Disable interaction by setting 'moving' to true for the same duration as our transition (0.5s = 500ms)
-  function disableInteraction() {
-    moving = true;
-
-    setTimeout(function(){
-      moving = false
-    }, 500);
-  }
-
-  function moveCarouselTo(slide) {
-
-    // Check if carousel is moving, if not, allow interaction
-    if(!moving) {
-
-      // temporarily disable interactivity
-      disableInteraction();
-
-      // Preemptively set variables for the current next and previous slide, as well as the potential next or previous slide.
-      var newPrevious = slide - 1,
-          newNext = slide + 1,
-          oldPrevious = slide - 2,
-          oldNext = slide + 2;
-
-      // Test if carousel has more than three items
-      if ((totalItems - 1) > 3) {
-
-        // Checks if the new potential slide is out of bounds and sets slide numbers
-        if (newPrevious <= 0) {
-          oldPrevious = (totalItems - 1);
-        } else if (newNext >= (totalItems - 1)){
-          oldNext = 0;
-        }
-
-        // Check if current slide is at the beginning or end and sets slide numbers
-        if (slide === 0) {
-          newPrevious = (totalItems - 1);
-          oldPrevious = (totalItems - 2);
-          oldNext = (slide + 1);
-        } else if (slide === (totalItems -1)) {
-          newPrevious = (slide - 1);
-          newNext = 0;
-          oldNext = 1;
-        }
-
-        items[oldPrevious].className = itemClassName;
-        items[oldNext].className = itemClassName;
-
-        // Add the new classes
-        items[newPrevious].className = itemClassName + " prev";
-        items[slide].className = itemClassName + " active";
-        items[newNext].className = itemClassName + " next";
-      }
+    } else if (targetIndex === slides.length - 1) {
+        nextButton.classList.add('hide');
+        prevButton.classList.remove('hide');
+    } else {
+        prevButton.classList.remove('hide');
+        nextButton.classList.remove('hide');
     }
-  }
+}
 
-  // Next navigation handler
-  function moveNext() {
+//move right with nextButton
+nextButton.addEventListener('click', e => {
+    const currentSlide = track.querySelector('.current-slide');
+    const nextSlide = currentSlide.nextElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const targetIndex = dots.findIndex(dot => dot === currentDot) + 1;
+    const targetDot = dots[targetIndex];
 
-    // Check if moving
-    if (!moving) {
+    moveToSlide(nextSlide, currentSlide);
+    if (!targetDot) return;
 
-      // If it's the last slide, reset to 0, else +1
-      if (slide === (totalItems - 1)) {
-        slide = 0;
-      } else {
-        slide++;
-      }
+    removeStyle(nextSlide, currentSlide, targetDot, currentDot, targetIndex);
 
-      // Move carousel to updated slide
-      moveCarouselTo(slide);
-    }
-  }
+});
 
-  // Previous navigation handler
-  function movePrev() {
+//move left with prevButton
+prevButton.addEventListener('click', e => {
+    const currentSlide = track.querySelector('.current-slide');
+    const prevSlide = currentSlide.previousElementSibling;
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const targetIndex = dots.findIndex(dot => dot === currentDot) - 1;
+    const targetDot = dots[targetIndex];
 
-    // Check if moving
-    if (!moving) {
+    moveToSlide(prevSlide, currentSlide);
+    if (!targetDot) return;
 
-      // If it's the first slide, set as the last slide, else -1
-      if (slide === 0) {
-        slide = (totalItems - 1);
-      } else {
-        slide--;
-      }
+    removeStyle(prevSlide, currentSlide, targetDot, currentDot, targetIndex);
+});
 
-      // Move carousel to updated slide
-      moveCarouselTo(slide);
-    }
-  }
+//Bottom dots navigation movement
+dotsNav.addEventListener('click', e => {
+    //which button was clicked on
+    const targetDot = e.target.closest('button');
+    if (!targetDot) return;
 
-  // Initialise carousel
-  function initCarousel() {
-    setInitialClasses();
-    setEventListeners();
+    const currentSlide = track.querySelector('.current-slide');
+    const currentDot = dotsNav.querySelector('.current-slide');
+    const targetIndex = dots.findIndex(dot => dot === targetDot);
+    const targetSlide = slides[targetIndex];
 
-    moving = false;
-  }
+    moveToSlide(targetSlide, currentSlide);
+    currentDot.classList.remove('current-slide');
+    targetDot.classList.add('current-slide');
 
-  initCarousel();
+    removeStyle(targetSlide, currentSlide, targetDot, currentDot, targetIndex);
 
-}(document));
+});
+
 
 // Accordion
 var acc = document.getElementsByClassName("accordion");
@@ -142,9 +108,9 @@ for (i = 0; i < acc.length; i++) {
 }
 
 // hiding the buttons on carousel
-const client_btn = document.getElementById('client-btn');
-const lawyer_btn = document.getElementById('lawyer-btn');
-const admin_btn = document.getElementById('admin-btn');
+const client_btn2 = document.getElementById('client-btn');
+const lawyer_btn2 = document.getElementById('lawyer-btn');
+const admin_btn2 = document.getElementById('admin-btn');
 
 
 function admin_form() {

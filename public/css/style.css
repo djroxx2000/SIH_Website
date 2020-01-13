@@ -203,19 +203,6 @@ ul{
     #item1 h1{
         display: none;
     }
-    .carousel button {
-        position: absolute;
-        top: 70%;
-        left: 30%;
-    }
-    .carousel__photo {
-        padding-top: 25%;
-        padding-bottom: 25%;
-        background-color: #fff;
-    }
-    .carousel-wrapper {
-        margin-top: 0;
-    }
     .quote {
         margin-top: 7%;
         font-size: 1rem;
@@ -234,18 +221,6 @@ ul{
     #item1 h1{
         display: none;
     }
-    .carousel-wrapper {
-        margin-top: 10%;
-    }
-    .carousel button {
-        position: absolute;
-        top: 70%;
-        left: 40%;
-    }
-    .carousel__photo {
-        padding-top: 20%;
-        padding-bottom: 20%;
-    }
     .quote {
         margin-top: 5%;
         font-size: 1.1rem;
@@ -263,14 +238,6 @@ ul{
     #item1 h1{
         display: none;
     }
-    .carousel-wrapper {
-        margin-top: 10%;
-    }
-    .carousel button {
-        position: absolute;
-        top: 70%;
-        left: 50%;
-    }
     .quote {
         font-size: 1.1rem;
     }
@@ -286,14 +253,6 @@ ul{
 @media (max-width: 1040px) and (min-width: 801px){
     #item1 h1{
         display: none;
-    }
-    .carousel-wrapper {
-        margin-top: 10%;
-    }
-    .carousel button {
-        position: absolute;
-        top: 80%;
-        left: 60%;
     }
     .quote {
         font-size: 1.3rem;

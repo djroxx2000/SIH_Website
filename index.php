@@ -63,24 +63,41 @@
     </div>
     <!-- home section ends -->
 
+    <!--public/images/quote2.jpg
+    onclick="'
+    onclick="window.location.href='lawyer_login.php'
+    onclick="window.location.href='admin_login.php'-->
     <div id="login">
         <div class="carousel-wrapper">
-            <div class="carousel">
-
-                <img class="carousel__photo initial" src="public/images/quote1.jpg">
-                <button class="sm" id="client-btn" onclick="window.location.href='client_login.php'">Log in as Client</button>
-                <div id="client-div"></div>
-                <img class="carousel__photo" src="public/images/quote2.jpg">
-                <button class="sm" id="lawyer-btn" onclick="window.location.href='lawyer_login.php'"> Log in as Lawyer</button>
-                <div id="lawyer-div"></div>
-
-                <button class="sm btn-main" id="admin-btn" onclick="window.location.href='admin_login.php'">Admin</button>
-                <div id="admin-div"></div>
-
-                <div class="carousel__button--next"></div>
-                <div class="carousel__button--prev"></div>
-
+            <div class="carousel__button carousel__button--prev hide">
+                <i class="fas fa-chevron-left fa-4x"></i>
             </div>
+            <div class="carousel__track-container">
+                <ul class="carousel__track">
+                    <li class="carousel__slide current-slide">
+                        <img class="carousel__image" src="public/images/quote2.jpg" alt="">
+                        <button class="sm" id="client-btn" onclick="window.location.href='client_login.php'">
+                            Log in as Client
+                        </button>
+                    </li>
+                    <li class="carousel__slide">
+                        <img class="carousel__image" src="public/images/quote1.jpg" alt="">
+                        <button class="sm" id="lawyer-btn" onclick=onclick="window.location.href='lawyer_login.php'">
+                            Log in as Lawyer
+                        </button>
+                        <div id="lawyer-div">
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="carousel__button carousel__button--next">
+                <i class="fas fa-chevron-right fa-4x"></i>
+            </div>
+        </div>
+        <div class="carousel__nav">
+            <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
         </div>
     </div>
     <!-- login carousel ends -->
