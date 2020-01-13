@@ -26,24 +26,26 @@
                 $password=($_POST["client-password"]);
                 require_once("includes/db.php");
                 $con;
-                $connectingdb;
-                if ($connectingdb) {
-                    $query = "SELECT * FROM client WHERE client_email = '{$email}'";
-                    $Execute=mysqli_query($con,$query);
-                    if($Execute){
-                        if($obj=mysqli_fetch_assoc($Execute)){
-                            if (password_verify($password, $obj["client_password"])){
-                                echo "Pw true";
-                            }
-                            else{
-                                echo "invalid pw";
-                            }
-                        }else{
-                            echo "not found email";
-                        }
+                if ($con) {
+                    $stmt = $con->prepare("SELECT client_id, client_password FROM client WHERE client_email = ?");
+                    $stmt->bind_param('s', $email);
+                    $stmt->execute();
+                    $stmt->store_result();
+                    $stmt->bind_result($client_id, $db_pwd);
+                    while ($stmt->fetch()) {
+                        $client_pw = $db_pwd;
                     }
-                    else{
-                        echo "server prob";
+                    $numRows = $stmt->num_rows;
+                    if ($numRows === 0) {
+                        echo "email not found";
+                    }
+                    else {
+                        if (password_verify($password, $client_pw) == false){
+                            echo "invalid pw";
+                        }
+                        else{
+                            echo "correct pw";
+                        }
                     }
                 }
                 else{

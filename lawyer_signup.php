@@ -28,7 +28,7 @@
             require_once("includes/db.php");
             $con;
             if ($con) {
-                $stmt = $con->prepare("SELECT * FROM lawyer_login WHERE lawyer_email = = ?");
+                $stmt = $con->prepare("SELECT * FROM lawyer_login WHERE lawyer_email = ?");
                 $stmt->bind_param('s', $email);
                 $stmt->execute();
                 $stmt->store_result();
@@ -39,7 +39,7 @@
                 else{
                     $hashedpwd = password_hash($password, PASSWORD_BCRYPT);
                     $stmt = $con->prepare("INSERT INTO lawyer_login(lawyer_first_name, lawyer_last_name, lawyer_email, lawyer_password)
-                    VALUES (?,?,?,?)";
+                    VALUES (?,?,?,?)");
                     $stmt->bind_param('ssss', $firstname, $lastname, $email, $hashedpwd);
                     $stmt->execute();
                     if ($stmt->affected_rows === -1) {
