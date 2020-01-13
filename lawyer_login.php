@@ -26,24 +26,26 @@
             $password=($_POST["lawyer-password"]);
             require_once("includes/db.php");
             $con;
-            $connectingdb;
-            if ($connectingdb) {
-                $query = "SELECT * FROM lawyer_login WHERE lawyer_email = '{$email}'";
-                $Execute=mysqli_query($con,$query);
-                if($Execute){
-                    if($obj=mysqli_fetch_assoc($Execute)){
-                        if (password_verify($password, $obj["lawyer_password"])){
-                            echo "Pw true";
-                        }
-                        else{
-                            echo "invalid pw";
-                        }
-                    }else{
-                        echo "not found email";
-                    }
+            if ($con) {
+                $stmt = $con->prepare("SELECT lawyer_id, lawyer_password FROM lawyer_login WHERE lawyer_email = ?");
+                $stmt->bind_param('s', $email);
+                $stmt->execute();
+                $stmt->store_result();
+                $stmt->bind_result($lawyer_id, $db_pwd);
+                while ($stmt->fetch()) {
+                    $lawyer_pw = $db_pwd;
                 }
-                else{
-                    echo "server prob";
+                $numRows = $stmt->num_rows;
+                if ($numRows === 0) {
+                    echo "email not found";
+                }
+                else {
+                    if (password_verify($password, $lawyer_pw) == false){
+                        echo "invalid pw";
+                    }
+                    else{
+                        echo "correct pw";
+                    }
                 }
             }
             else{
