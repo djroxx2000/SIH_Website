@@ -27,23 +27,29 @@
             $password=($_POST["lawyer-password"]);
             require_once("includes/db.php");
             $con;
-            $connectingdb;
-            if ($connectingdb) {
-                $query = "SELECT * FROM lawyer_login WHERE lawyer_email = '{$email}'";
-                $Execute=mysqli_query($con,$query);
-                $x=0;
-                if($Execute){
-                    if($Execute->num_rows){
-                        echo "Email already used.";
-                        $x=1;
-                    }
+            if ($con) {
+                $stmt = $con->prepare("SELECT * FROM lawyer_login WHERE lawyer_email = = ?");
+                $stmt->bind_param('s', $email);
+                $stmt->execute();
+                $stmt->store_result();
+                $numRows = $stmt->num_rows;
+                if ($numRows > 0) {
+                    echo "Email already used.";
                 }
-                if($x==0){
+                else{
                     $hashedpwd = password_hash($password, PASSWORD_BCRYPT);
-                    $query="INSERT INTO lawyer_login(lawyer_first_name, lawyer_last_name, lawyer_email, lawyer_password)
-                    VALUES ('$firstname','$lastname','$email','$hashedpwd')";
-                    $Execute=mysqli_query($con,$query);
-                    echo "Signuped";
+                    $stmt = $con->prepare("INSERT INTO lawyer_login(lawyer_first_name, lawyer_last_name, lawyer_email, lawyer_password)
+                    VALUES (?,?,?,?)";
+                    $stmt->bind_param('ssss', $firstname, $lastname, $email, $hashedpwd);
+                    $stmt->execute();
+                    if ($stmt->affected_rows === -1) {
+                        echo "Error";
+                        exit();
+                    } else {
+                        $stmt->close();
+                        echo "signuped client";
+                        exit();
+                    }
                 }
             }
         }
