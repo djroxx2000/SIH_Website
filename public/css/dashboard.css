@@ -1,0 +1,27 @@
+#side_menu .a{
+  color: #9fb1c2;
+}
+.row {
+    background-color: #2f4050;
+}
+
+.col-sm-10 {
+    background-color: #fff;
+}
+
+.col-sm-2 h1{
+    color: #fff;
+    text-align:center;
+}
+
+#side_menu .active.a{
+  color: #ffffff;
+  background-color: #27AAE1;
+  font-weight: bold;
+}
+#side_menu a:hover{
+   color:#ffffff;
+   background-color: #1ab394;
+   font-weight: bold;
+   display: block;
+}

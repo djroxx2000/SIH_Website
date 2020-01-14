@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$pwd = '';
+$pwd = 'pw';
 $db = 'court_case_management';
 
 $con = new mysqli($host, $user, $pwd, $db);
