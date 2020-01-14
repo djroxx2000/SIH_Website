@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2020 at 12:58 PM
+-- Generation Time: Jan 14, 2020 at 01:04 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.3.8
 
@@ -66,7 +66,15 @@ CREATE TABLE `cases` (
 --
 
 INSERT INTO `cases` (`case_id`, `case_type`, `case_details`, `next_hearing_date`, `prev_hearing_date`, `case_status`, `court_name`) VALUES
-(1, 'idk_type', 'random case details', '2012-12-12', '2011-11-11', 'pending', 'supreme court');
+(1, 'idk_type', 'random case details', '2012-12-12', '2011-11-11', 'pending', 'supreme court'),
+(2, 'murdeR', 'Murder of mr hritik from mumbai', '2011-12-12', '2010-12-12', 'pending', 'high court'),
+(3, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'pending', 'high court'),
+(4, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'pending', 'high court'),
+(5, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'pending', 'high court'),
+(6, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'finished', 'high court'),
+(7, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'finished', 'high court'),
+(8, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'finished', 'high court'),
+(9, 'test-type', 'test-details', '2011-12-12', '2010-12-12', 'finished', 'high court');
 
 -- --------------------------------------------------------
 
@@ -215,7 +223,7 @@ ALTER TABLE `admin_login`
 -- AUTO_INCREMENT for table `cases`
 --
 ALTER TABLE `cases`
-  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `client`
