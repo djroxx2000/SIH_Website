@@ -1,3 +1,6 @@
+<?php
+require_once("includes/sessions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,13 +30,14 @@
                 require_once("includes/db.php");
                 $con;
                 if ($con) {
-                    $stmt = $con->prepare("SELECT client_id, client_password FROM client WHERE client_email = ?");
+                    $stmt = $con->prepare("SELECT client_id, client_first_name, client_password FROM client WHERE client_email = ?");
                     $stmt->bind_param('s', $email);
                     $stmt->execute();
                     $stmt->store_result();
-                    $stmt->bind_result($client_id, $db_pwd);
+                    $stmt->bind_result($client_id, $cname, $db_pwd);
                     while ($stmt->fetch()) {
                         $client_pw = $db_pwd;
+                        $clientname=$cname;
                     }
                     $numRows = $stmt->num_rows;
                     if ($numRows === 0) {
@@ -45,6 +49,9 @@
                         }
                         else{
                             echo "correct pw";
+                            $_SESSION['user']=$email;
+                            $_SESSION['clientname']=$clientname;
+                            header("Location:clientdashboard.php");
                         }
                     }
                 }

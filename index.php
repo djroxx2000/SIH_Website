@@ -152,3 +152,21 @@
 
 </body>
 </html>
+
+
+
+
+
+<?php
+//if logged in, will redirected to dashobard
+if(isset($_SESSION['user'])){
+    echo '<script>window.location.replace("clientdashboard.php");</script>';
+}
+//Logout Script
+if(isset($_GET['logout'])){
+    session_destroy();
+    unset($_SESSION);
+    echo '<script>window.location.replace("index.php");</script>';
+}
+
+?>
