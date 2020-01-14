@@ -27,13 +27,14 @@
                 require_once("includes/db.php");
                 $con;
                 if ($con) {
-                    $stmt = $con->prepare("SELECT admin_id, password FROM admin_login WHERE email = ?");
+                    $stmt = $con->prepare("SELECT admin_id, admin_first_name, password FROM admin_login WHERE email = ?");
                     $stmt->bind_param('s', $email);
                     $stmt->execute();
                     $stmt->store_result();
-                    $stmt->bind_result($admin_id, $db_pwd);
+                    $stmt->bind_result($admin_id, $admin_first_name, $db_pwd);
                     while ($stmt->fetch()) {
                         $admin_pw = $db_pwd;
+                        $admin_name = $admin_first_name;
                     }
                     $numRows = $stmt->num_rows;
                     if ($numRows === 0) {
@@ -44,7 +45,10 @@
                             echo "invalid pw";
                         }
                         else{
-                            echo "correct pw";
+                            require_once("includes/sessions.php");
+                            $_SESSION["admin_id"] = $admin_id;
+                            $_SESSION["admin_name"] = $admin_name;
+                            header("Location: admin_dashboard.php?id=".$admin_id);
                         }
                     }
                 }
