@@ -63,10 +63,6 @@
     </div>
     <!-- home section ends -->
 
-    <!--public/images/quote2.jpg
-    onclick="'
-    onclick="window.location.href='lawyer_login.php'
-    onclick="window.location.href='admin_login.php'-->
     <div id="login">
         <div class="carousel-wrapper">
             <div class="carousel__button carousel__button--prev hide">
@@ -144,6 +140,16 @@
             <div class="panel">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
             </div>
+
+            <button class="accordion">Question 7 ?</button>
+            <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            </div>
+
+            <button class="accordion">Question 7 ?</button>
+            <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            </div>
         </div>
     </div>
     <!-- faq section ends -->
@@ -152,21 +158,3 @@
 
 </body>
 </html>
-
-
-
-
-
-<?php
-//if logged in, will redirected to dashobard
-if(isset($_SESSION['user'])){
-    echo '<script>window.location.replace("clientdashboard.php");</script>';
-}
-//Logout Script
-if(isset($_GET['logout'])){
-    session_destroy();
-    unset($_SESSION);
-    echo '<script>window.location.replace("index.php");</script>';
-}
-
-?>
