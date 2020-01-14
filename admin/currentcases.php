@@ -53,13 +53,13 @@
                             if ($con) {
                                 $x=1;
                                 $stmt = $con->prepare("
-                                SELECT case_type, case_details, next_hearing_date, prev_hearing_date, court_name
+                                SELECT case_id, case_type, case_details, next_hearing_date, prev_hearing_date, court_name
                                 FROM cases WHERE case_status = ?");
                                 $status = "pending";
                                 $stmt->bind_param('s', $status);
                                 $stmt->execute();
                                 $stmt->store_result();
-                                $stmt->bind_result($case_type,
+                                $stmt->bind_result($case_id, $case_type,
                                 $case_details, $next_hearing_date,
                                 $prev_hearing_date, $court_name);
 
@@ -73,7 +73,7 @@
                                         <td> {$next_hearing_date} </td>
                                         <td> Pending </td>
                                         <td> {$court_name} </td>
-                                        <td><button class='btn btn-info'> Update </button> </td>
+                                        <td><a class='btn btn-info' href='admin_dashboard.php?q=updatecase&id={$case_id}'> Update </button> </td>
                                     </tr>
                                     ";
                                     $x++;

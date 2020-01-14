@@ -45,6 +45,8 @@
             require_once("admin/managelawyers.php");
         elseif($_GET['q'] == "feedbacks")
             require_once("admin/feedbacks.php");
+        elseif($_GET['q'] == "updatecase")
+            require_once("admin/updatecase.php");
 
     ?>
 
