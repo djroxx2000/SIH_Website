@@ -78,6 +78,9 @@
                             echo "Deleted Lawyer";
                         }
                     }
+                    if(isset($_POST['delete-no'])){
+                        Header("Location: admin_dashboard.php?q=managelawyers");
+                    }
                 ?>
 
            </div>
