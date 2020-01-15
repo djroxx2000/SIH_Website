@@ -75,7 +75,11 @@
                                         <td> {$lawyer_phone} </td>
                                         <td> {$lawyer_city} </td>
                                         <td> {$lawyer_rating} </td>
-                                        <td> <button class='btn btn-danger'> Remove </button> </td>
+                                        <td>
+                                            <a class='btn btn-danger' href='admin_dashboard.php?q=removelawyer&id={$lawyer_id}'>
+                                                Remove
+                                            </a>
+                                        </td>
                                     </tr>
                                     ";
                                     $x++;
