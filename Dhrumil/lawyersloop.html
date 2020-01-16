@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hi
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/dashboard.css">
+    <link rel="icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/2f7569df82.js" crossorigin="anonymous"></script>
+    <link rel = "icon"
+    href = "public/images/statue.jpg"
+    type = "image/x-icon">
+</head>
+
+<body>
+
+    <div class="title-bar">
+        <div id="item1">
+            <i class="fas fa-gavel fa-3x"></i>
+            <h1>Court Case Information System</h1>
+        </div>
+        <div id="item2">
+            <button class="sm" onclick="window.top.location='logout.php'">
+                <span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;&nbsp;Logout
+            </button>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <h1>
+                    <?php echo $_SESSION["admin_name"]; ?>
+                </h1>
+                <br>
+                <ul id="side_menu" class="nav nav-pills nav-stacked">
+                    <li class="active">
+                        <a href="admin_dashboard.php">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            &nbsp; Current Cases
+                         </a>
+                    </li>
+                    <li class="">
+                        <a href="admin_dashboard.php?q=finishedcases">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            &nbsp; Finished Cases
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="admin_dashboard.php?q=managelawyers">
+                            <span class="glyphicon glyphicon-user"></span>
+                            &nbsp; Manage Lawyers
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="admin_dashboard.php?q=feedbacks">
+                            <span class="glyphicon glyphicon-comment"></span>
+                            &nbsp; Feedbacks
+                        </a>
+                    </li>
+                </ul>
+           </div>   <!--div ending of vertical nav -->
+    
+           <div class="col-sm-10" style="text-align:left; background-color: white; font-weight: bold;padding-bottom: 20px;">
+                
+<div class="container">
+<div class="row">
+    <div class="col-sm-4" style="background-color: white;">
+      <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
+  
+    <div class="col-sm-4" style="background-color: white;">
+      <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
+  
+    <div class="col-sm-4" style="background-color: white;">
+      <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+  </div>
+  
+  
+  
+    </div>
+  
+  
+    </div>
+  
+            </div>
+       </div>
+    </div>
+  
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/76a3098157.js"></script>
+</body>
+</html>
