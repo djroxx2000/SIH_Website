@@ -38,6 +38,7 @@ require_once("includes/sessions.php");
                     while ($stmt->fetch()) {
                         $client_pw = $db_pwd;
                         $clientname=$cname;
+                        $clientid = $client_id;
                     }
                     $numRows = $stmt->num_rows;
                     if ($numRows === 0) {
@@ -45,18 +46,18 @@ require_once("includes/sessions.php");
                     }
                     else {
                         if (password_verify($password, $client_pw) == false){
-                            echo "invalid pw";
+                            echo "invalid password";
                         }
                         else{
                             echo "correct pw";
-                            $_SESSION['user']=$email;
-                            $_SESSION['clientname']=$clientname;
-                            header("Location:clientdashboard.php");
+                            $_SESSION['client_id']=$clientid;
+                            $_SESSION['client_name']=$clientname;
+                            header("Location:client_dashboard.php");
                         }
                     }
                 }
                 else{
-                    echo "server prob";
+                    echo "server problem";
                 }
             }
         ?>
