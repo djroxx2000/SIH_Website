@@ -47,7 +47,8 @@
                         exit();
                     } else {
                         $stmt->close();
-                        echo "signuped client";
+                        echo "signuped lawyer";
+                        Header("Location: lawyer_login.php");
                         exit();
                     }
                 }

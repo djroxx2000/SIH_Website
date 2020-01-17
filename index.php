@@ -158,7 +158,42 @@
         </div>
     </div>
     <!-- faq section ends -->
-    
+
+    <!-- Contact form start -->
+    <div id="contact">
+        <label for="fname">First Name :</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+
+        <label for="lname">Last Name :</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+        <label for="email">Email :</label>
+        <input type="text" id="email" name="email" placeholder="Your email address.." required>
+
+        <label for="comments">Message :</label>
+        <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px" minlength="5"
+            maxlength="250"></textarea>
+
+        <div class="contact-submit">
+            <button class="submit-btn" value="Submit" name='contact_submit' onclick="redirect()">Submit</button>
+        </div>
+    </div>
+
+    <script src="public/js/app.js"> </script>
+    <script>
+    function redirect() {
+        const fname = document.getElementById('fname').value;
+        const lname = document.getElementById('lname').value;
+        const email = document.getElementById('email').value;
+        const comments = document.getElementById('comments').value;
+        window.location.href =
+            "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=dhananjay.shettigar2252000@gmail.com&su=Contact+by+" +
+            fname + "+" + lname +
+            "&body=" + comments + "&disablechatbrowsercheck=1";
+
+    }
+    </script>
+
     <script src="public/js/app.js"> </script>
 
 </body>
