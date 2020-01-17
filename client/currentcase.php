@@ -64,9 +64,10 @@
                                 $stmt->store_result();
                                 $stmt->bind_result($case_type, $case_details,
                                 $next_hearing_date, $case_status, $lawyer_status);
+$x=1;		
 
                                 while ($stmt->fetch()) {
-                                    $x=1;
+                                    
                                     if(!$next_hearing_date)
                                         $next_hearing_date = "not yet decided";
                                     echo "

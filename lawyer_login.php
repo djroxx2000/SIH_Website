@@ -17,36 +17,36 @@
 
     <?php
 if (isset($_POST["lawyer-login"])) {
- $email = ($_POST["lawyer-email"]);
- $password = ($_POST["lawyer-password"]);
- require_once "includes/db.php";
- $con;
- if ($con) {
-  $stmt = $con->prepare("SELECT lawyer_id, lawyer_password, lawyer_first_name FROM lawyer_login WHERE lawyer_email = ?");
-  $stmt->bind_param('s', $email);
-  $stmt->execute();
-  $stmt->store_result();
-  $stmt->bind_result($lawyer_id, $db_pwd, $lawyer_name);
-  while ($stmt->fetch()) {
-   $lawyer_pw = $db_pwd;
-  }
-  $numRows = $stmt->num_rows;
-  if ($numRows === 0) {
-   echo "email not found";
-  } else {
-   if (password_verify($password, $lawyer_pw) == false) {
-    echo "invalid pw";
-   } else {
-    require_once "includes/sessions.php";
-    $_SESSION["lawyer_id"] = $lawyer_id;
-    $_SESSION["lawyer_name"] = $lawyer_name;
-    header("Location: lawyer_dashboard.php?id=" . $lawyer_id);
+	$email = ($_POST["lawyer-email"]);
+	$password = ($_POST["lawyer-password"]);
+	require_once "includes/db.php";
+	$con;
+	if ($con) {
+		$stmt = $con->prepare("SELECT lawyer_id, lawyer_password, lawyer_first_name FROM lawyer_login WHERE lawyer_email = ?");
+		$stmt->bind_param('s', $email);
+		$stmt->execute();
+		$stmt->store_result();
+		$stmt->bind_result($lawyer_id, $db_pwd, $lawyer_name);
+		while ($stmt->fetch()) {
+			$lawyer_pw = $db_pwd;
+		}
+		$numRows = $stmt->num_rows;
+		if ($numRows === 0) {
+			echo "email not found";
+		} else {
+			if (password_verify($password, $lawyer_pw) == false) {
+				echo "invalid pw";
+			} else {
+				require_once "includes/sessions.php";
+				$_SESSION["lawyer_id"] = $lawyer_id;
+				$_SESSION["lawyer_name"] = $lawyer_name;
+				header("Location: lawyer_dashboard.php?id=" . $lawyer_id);
 
-   }
-  }
- } else {
-  echo "server prob";
- }
+			}
+		}
+	} else {
+		echo "server prob";
+	}
 }
 ?>
 
@@ -78,7 +78,7 @@ if (isset($_POST["lawyer-login"])) {
                 </u>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
+            <div class="container" style="background-color:#fff">
                 <button type="button" class="cancelbtn" onclick="window.location.href='index.php'">
                     Cancel
                 </button>

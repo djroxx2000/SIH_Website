@@ -10,7 +10,7 @@
                     <a href="client_dashboard.php">
                         <span class="glyphicon glyphicon-user"></span>
                         &nbsp; Profile
-                     </a>
+                    </a>
                 </li>
                 <li class="">
                     <a href="client_dashboard.php?q=addcase">
@@ -37,42 +37,44 @@
                     </a>
                 </li>
             </ul>
-        </div>   <!--div ending of vertical nav -->
+        </div>
+        <!--div ending of vertical nav -->
 
         <div class="col-sm-10" style="font-weight: bold; padding-bottom: 30px;">
             <?php
-                require_once("includes/db.php");
-                $con;
-                if ($con) {
-                    echo "<h1>Your Notifications</h1>";
-                    $stmt = $con->prepare("
-                    SELECT case_type, case_detail, accepted_status
-                    FROM notifications WHERE client_id = ?");
-                    $stmt->bind_param('s', $_SESSION['client_id']);
-                    $stmt->execute();
-                    $stmt->store_result();
-                    $stmt->bind_result($ctype, $cdetail, $acc_status);
-                    while ($stmt->fetch()) {
-                        if($acc_status == 'accepted'){
-                            echo "
+require_once "includes/db.php";
+$con;
+if ($con) {
+	echo "<h1>Your Notifications</h1>";
+	$stmt = $con->prepare("
+                    SELECT case_type, case_details, lawyer_status
+                    FROM cases WHERE clientforcase_id = ?");
+	$cid = (int) $_SESSION['client_id'];
+	$stmt->bind_param('i', $cid);
+	$stmt->execute();
+	$stmt->store_result();
+	$stmt->bind_result($ctype, $cdetail, $acc_status);
+	while ($stmt->fetch()) {
+		if ($acc_status == 'accepted') {
+			echo "
                             <div>
                                 <p  style='font-size:20px;font-family:Times New Roman;color:green;'>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
                             </div>
                             ";
-                        }
-                        if($acc_status == 'rejected'){
-                            echo "
+		}
+		if ($acc_status == 'rejected') {
+			echo "
                             <div>
                                 <p style='font-size:20px;font-family:Times New Roman;color:red;'>
                                     Your case of {$ctype} with details {$cdetail} has been {$acc_status}
                                 </p>
                             </div>
                             ";
-                        }
-                    }
-                }
-            ?>
+		}
+	}
+}
+?>
 
         </div>
-   </div>
+    </div>
 </div>

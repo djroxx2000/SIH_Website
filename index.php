@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="public/css/carousel.css">
     <link rel="stylesheet" href="public/css/style.css">
     <script src="https://kit.fontawesome.com/2f7569df82.js" crossorigin="anonymous"></script>
-    <link rel = "icon"
-    href = "public/images/statue.jpg"
-    type = "image/x-icon">
+    <link rel="icon" href="public/images/statue.jpg" type="image/x-icon">
 </head>
 
 <body>
@@ -108,35 +106,45 @@
 
             <button class="accordion">Is this website, a legit government website ?</button>
             <div class="panel">
-                <p>Yes, this website is in control of the  Indian government and is a legit one.</p>
+                <p>Yes, this website is in control of the Indian government and is a legit one.</p>
             </div>
 
             <button class="accordion">Is this website secure and safe?</button>
             <div class="panel">
-                <p>This website take the users data and keeps it safe and secure. We assure you that your private data will only be used for necessary transaction purposes. </p>
+                <p>This website take the users data and keeps it safe and secure. We assure you that your private data
+                    will only be used for necessary transaction purposes. </p>
             </div>
 
             <button class="accordion">What payment methods are accepted here?</button>
             <div class="panel">
-                <p>You can pay for transaction using Credit , Debit Cards also the service of E- Challan or Net - Banking is made available for the users</p>
+                <p>You can pay for transaction using Credit , Debit Cards also the service of E- Challan or Net -
+                    Banking is made available for the users</p>
             </div>
 
             <button class="accordion">How to find the best suited lawyer for our case?</button>
             <div class="panel">
-                <p>There are filters in the website that sorts various lawyers as per their field of specialization,ratings, win-ratio and cost,So that you can find the best suited lawyer for your case</p>
+                <p>There are filters in the website that sorts various lawyers as per their field of
+                    specialization,ratings, win-ratio and cost,So that you can find the best suited lawyer for your case
+                </p>
             </div>
 
             <button class="accordion">Question 5 ?</button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur</p>
             </div>
 
             <button class="accordion">Question 6 ?</button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur</p>
             </div>
 
-            <button class="accordion">Question 7 ?</button>
+            <!-- <button class="accordion">Question 7 ?</button>
             <div class="panel">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
             </div>
@@ -154,7 +162,7 @@
             <button class="accordion">Question 10 ?</button>
             <div class="panel">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- faq section ends -->
@@ -197,4 +205,5 @@
     <script src="public/js/app.js"> </script>
 
 </body>
+
 </html>
