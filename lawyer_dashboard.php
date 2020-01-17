@@ -46,6 +46,8 @@ if (!isset($_GET['q'])) {
 	require_once "lawyer/managerequests.php";
 } elseif ($_GET['q'] == "invoice") {
 	require_once "lawyer/invoice.php";
+} elseif ($_GET['q'] == "addcase") {
+   require_once "lawyer/addcase.php";
 }
 
 ?>
