@@ -57,7 +57,7 @@
                             while ($stmt->fetch()) {
                                 echo "
                                 <div class='col-sm-3'>
-                                    <div class='card' style='width: 18rem; text-align: center;'>
+                                    <div class='card' style='width: 18rem; text-align: center; margin-top: 2rem;'>
                                         <img src='public/images/user.png' width='40' height='40' class='card-img-top' alt='...'>
                                         <div class='card-body'>
                                             <h5 class='card-title'>{$lfn} {$lln}</h5>

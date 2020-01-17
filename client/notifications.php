@@ -46,16 +46,16 @@
                 if ($con) {
                     echo "<h1>Your Notifications</h1>";
                     $stmt = $con->prepare("
-                    SELECT notification FROM client_notifications WHERE client_id = ?");
+                    SELECT case_type, case_detail, accepted_status
+                    FROM notifications WHERE client_id = ?");
                     $stmt->bind_param('s', $_SESSION['client_id']);
                     $stmt->execute();
                     $stmt->store_result();
-                    $stmt->bind_result($nfn);
+                    $stmt->bind_result($ctype, $cdetail, $acc_status);
                     while ($stmt->fetch()) {
-                        $notif = $nfn;
                         echo "
                         <div>
-                            <p>{$notif}</p>
+                            <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
                         </div>
                         ";
                     }
