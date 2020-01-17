@@ -19,7 +19,22 @@
             } else {
                 $stmt->close();
                 echo "Case Added";
+            }
+
+            $accepted_status = "not yet accepted";
+            $stmt = $con->prepare("INSERT INTO notifications(
+                 client_id, lawyer_id, case_type, case_detail, accepted_status)
+                VALUES(?, ?, ?, ?, ?)");
+            $stmt->bind_param('sssss', $clientid, $lawyerid, $casetype, $casedetails, $accepted_status);
+
+            $stmt->execute();
+            if ($stmt->affected_rows === -1) {
+                echo "Error";
+            } else {
+                $stmt->close();
+                echo "Case Added";
                 Header("Location: client_dashboard.php?q=currentcase");
+
             }
         }
     }

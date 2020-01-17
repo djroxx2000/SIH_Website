@@ -53,11 +53,20 @@
                     $stmt->store_result();
                     $stmt->bind_result($ctype, $cdetail, $acc_status);
                     while ($stmt->fetch()) {
-                        echo "
-                        <div>
-                            <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
-                        </div>
-                        ";
+                        if($acc_status == 'accepted'){
+                            echo "
+                            <div>
+                                <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
+                            </div>
+                            ";
+                        }
+                        if($acc_status == 'rejected'){
+                            echo "
+                            <div>
+                                <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
+                            </div>
+                            ";
+                        }
                     }
                 }
             ?>

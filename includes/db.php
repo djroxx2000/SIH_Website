@@ -2,7 +2,7 @@
 
 $host = 'localhost';
 $user = 'root';
-$pwd = 'db';
+$pwd = 'agent viper';
 $db = 'court_case_management';
 
 $con = new mysqli($host, $user, $pwd, $db);
