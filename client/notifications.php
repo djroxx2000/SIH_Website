@@ -56,14 +56,16 @@
                         if($acc_status == 'accepted'){
                             echo "
                             <div>
-                                <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
+                                <p  style='font-size:20px;font-family:Times New Roman;color:green;'>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
                             </div>
                             ";
                         }
                         if($acc_status == 'rejected'){
                             echo "
                             <div>
-                                <p>Your case of {$ctype} with details {$cdetail} has been {$acc_status}</p>
+                                <p style='font-size:20px;font-family:Times New Roman;color:red;'>
+                                    Your case of {$ctype} with details {$cdetail} has been {$acc_status}
+                                </p>
                             </div>
                             ";
                         }

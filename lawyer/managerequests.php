@@ -78,10 +78,10 @@ if ($con) {
                 <td> {$case_type} </td>
                 <td> {$case_detail} </td>
                 <td>
-                <a class='btn btn-success' href='lawyer_dashboard.php?q=addcase&id={$_SESSION['lawyer_id']}'>
+                <a class='btn btn-success' href='lawyer_dashboard.php?q=addcase&id={$client_id}&status=accepted'>
                     Accept
                 </a>
-                <a class='btn btn-danger' href='lawyer_dashboard.php?q=addcase&id={$_SESSION['lawyer_id']}'> Reject
+                <a class='btn btn-danger' href='lawyer_dashboard.php?q=addcase&id={$client_id}'&status=rejected> Reject
                 </a>
                 </td>
             </tr>";
