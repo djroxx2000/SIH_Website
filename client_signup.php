@@ -48,7 +48,7 @@
                     } else {
                         $stmt->close();
                         echo "signuped client";
-                        echo "<Script language='JavaScript'>window.location.replace='client_signup.php';</Script>";
+                        Header("Location: client_login.php");
                         exit();
                     }
                 }

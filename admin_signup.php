@@ -52,6 +52,7 @@
                     } else {
                         $stmt->close();
                         echo "signuped admin";
+                        Header("Location: admin_login.php");
                         exit();
                     }
                 }
