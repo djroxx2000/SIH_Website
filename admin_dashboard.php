@@ -47,8 +47,8 @@
             require_once("admin/feedbacks.php");
         elseif($_GET['q'] == "updatecase")
             require_once("admin/updatecase.php");
-        elseif($_GET['q'] == 'removelawyer')
-            require_once("admin/removelawyer.php");
+        elseif($_GET['q'] == 'removefeedback')
+            require_once("admin/removefeedback.php");
 
     ?>
 

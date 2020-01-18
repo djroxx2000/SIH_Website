@@ -1,7 +1,7 @@
 <?php
 
-$user = 'testuser';
-$pwd = 'testpass';
+$user = 'root';
+$pwd = 'agent viper';
 $dsn = 'mysql:host=localhost;dbname=court_case_management;charset=utf8mb4';
 $options = [
  PDO::ATTR_EMULATE_PREPARES => false, // turn off emulation mode for "real" prepared statements

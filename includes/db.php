@@ -1,8 +1,8 @@
 <?php
 
 $host = 'localhost';
-$user = 'testuser';
-$pwd = 'testpass';
+$user = 'root';
+$pwd = 'agent viper';
 $db = 'court_case_management';
 
 $con = new mysqli($host, $user, $pwd, $db);
