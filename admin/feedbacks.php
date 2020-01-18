@@ -41,6 +41,7 @@
                         <th>Sr. no</th>
                         <th>Feedback</th>
                         <th>User</th>
+                        <th>Delete</th>
                     </tr>
                         <?php
                             require_once("includes/db.php");
@@ -48,11 +49,11 @@
                             if ($con) {
                                 $x=1;
                                 $stmt = $con->prepare("
-                                SELECT feedback_content, user_name
+                                SELECT feedback_id, feedback_content, user_name
                                 FROM feedbacks");
                                 $stmt->execute();
                                 $stmt->store_result();
-                                $stmt->bind_result($feedback, $name);
+                                $stmt->bind_result($feedback_id, $feedback, $name);
 
                                 while ($stmt->fetch()) {
                                     echo "
@@ -60,6 +61,11 @@
                                         <td> {$x} </td>
                                         <td> {$feedback} </td>
                                         <td> {$name} </td>
+                                        <td>
+                                            <a class='btn btn-danger' href='admin_dashboard.php?q=removefeedback&id={$feedback_id}'>
+                                                Remove
+                                            </a>
+                                        </td>
                                     </tr>
                                     ";
                                     $x++;

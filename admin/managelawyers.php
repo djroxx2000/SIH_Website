@@ -44,7 +44,6 @@
                         <th>Phone no.</th>
                         <th>City</th>
                         <th>Rating</th>
-                        <th>Delete</th>
                     </tr>
                         <?php
                             require_once("includes/db.php");
@@ -75,11 +74,6 @@
                                         <td> {$lawyer_phone} </td>
                                         <td> {$lawyer_city} </td>
                                         <td> {$lawyer_rating} </td>
-                                        <td>
-                                            <a class='btn btn-danger' href='admin_dashboard.php?q=removelawyer&id={$lawyer_id}'>
-                                                Remove
-                                            </a>
-                                        </td>
                                     </tr>
                                     ";
                                     $x++;

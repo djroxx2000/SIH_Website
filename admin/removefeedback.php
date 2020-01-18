@@ -39,26 +39,24 @@
                 $con;
                 if ($con) {
                     $stmt = $con->prepare("
-                    SELECT lawyer_first_name, lawyer_last_name, lawyer_email
-                    FROM lawyer_login WHERE lawyer_id=?");
+                    SELECT user_name
+                    FROM feedbacks WHERE feedback_id=?");
                     $stmt->bind_param('i', $_GET['id']);
                     $stmt->execute();
                     $stmt->store_result();
-                    $stmt->bind_result($lawyer_first_name, $lawyer_last_name, $lawyer_email);
+                    $stmt->bind_result($user_name);
                     while ($stmt->fetch()) {
-                        $lfn = $lawyer_first_name;
-                        $lln = $lawyer_last_name;
-                        $le = $lawyer_email;
+                        $uname = $user_name;
                     }
                 }
             ?>
            <div class="col-sm-10">
-                <h1>Remove Lawyer</h1>
+                <h1>Remove Feedback</h1>
                 <div class="alert alert-danger">
-                    Are you sure you want to delete lawyer <?php echo $lfn;?>&nbsp;<?php echo $lln;?> ?
+                    Are you sure you want to delete feedback from  <?php echo $uname;?> ?
                     <br>
                 </div>
-                <form action="admin_dashboard.php?q=removelawyer&id=<?php echo $_GET['id']; ?>" method="post">
+                <form action="admin_dashboard.php?q=removefeedback&id=<?php echo $_GET['id']; ?>" method="post">
                     <button class="btn btn-success btn-block" name="delete-yes">
                         Yes
                     </button>
@@ -72,14 +70,14 @@
                     if(isset($_POST['delete-yes'])){
                         if ($con) {
                             $stmt = $con->prepare("
-                            DELETE FROM lawyer_login WHERE lawyer_id = ?");
+                            DELETE FROM feedbacks WHERE feedback_id = ?");
                             $stmt->bind_param('i', $_GET['id']);
                             $stmt->execute();
-                            echo "Deleted Lawyer";
+                            echo "Deleted Feedback";
                         }
                     }
                     if(isset($_POST['delete-no'])){
-                        Header("Location: admin_dashboard.php?q=managelawyers");
+                        Header("Location: admin_dashboard.php?q=feedbacks");
                     }
                 ?>
 
