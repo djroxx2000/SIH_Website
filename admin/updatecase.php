@@ -25,6 +25,12 @@
                     </a>
                 </li>
                 <li class="">
+                    <a href="admin_dashboard.php?q=manageclients">
+                        <span class="glyphicon glyphicon-comment"></span>
+                        &nbsp; Manage Clients
+                    </a>
+                </li>
+                <li class="">
                     <a href="admin_dashboard.php?q=feedbacks">
                         <span class="glyphicon glyphicon-comment"></span>
                         &nbsp; Feedbacks

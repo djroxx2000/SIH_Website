@@ -49,6 +49,8 @@
             require_once("admin/updatecase.php");
         elseif($_GET['q'] == 'removefeedback')
             require_once("admin/removefeedback.php");
+        elseif($_GET['q'] == 'manageclients')
+            require_once("admin/manageclients.php");
 
     ?>
 
